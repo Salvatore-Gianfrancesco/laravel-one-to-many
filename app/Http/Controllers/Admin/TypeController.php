@@ -44,7 +44,7 @@ class TypeController extends Controller
         $type->slug = Str::slug($type->name);
         $type->save();
 
-        return to_route('admin.types.index')->with('message', 'Tipo creato con successo');
+        return to_route('admin.types.index')->with('message', 'Type ' . $type->id . ' stored successfully!');
     }
 
     /**
@@ -82,7 +82,7 @@ class TypeController extends Controller
         $type->slug = Str::slug($type->name);
         $type->save();
 
-        return to_route('admin.types.index')->with('message', 'Tipo modificato con successo');
+        return to_route('admin.types.index')->with('message', 'Type ' . $type->id . ' edited successfully!');
     }
 
     /**
@@ -95,6 +95,6 @@ class TypeController extends Controller
     {
         $type->delete();
 
-        return to_route('admin.types.index')->with('message', 'Tipo eliminato con successo');
+        return to_route('admin.types.index')->with('message', 'Type ' . $type->id . ' deleted successfully!');
     }
 }

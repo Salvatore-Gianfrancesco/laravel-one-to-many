@@ -50,9 +50,9 @@ class ProjectController extends Controller
             $validated['cover_img'] = $cover_img;
         }
 
-        Project::create($validated);
+        $project = Project::create($validated);
 
-        return to_route('admin.projects.index')->with('message', 'Progetto creato con successo');
+        return to_route('admin.projects.index')->with('message', 'Project ' . $project->id . ' stored successfully!');
     }
 
     /**
@@ -101,7 +101,7 @@ class ProjectController extends Controller
 
         $project->update($validated);
 
-        return to_route('admin.projects.index')->with('message', 'Progetto modificato con successo');
+        return to_route('admin.projects.index')->with('message', 'Project ' . $project->id . ' edited successfully!');
     }
 
     /**
@@ -118,6 +118,6 @@ class ProjectController extends Controller
 
         $project->delete();
 
-        return to_route('admin.projects.index')->with('message', 'Progetto eliminato con successo');
+        return to_route('admin.projects.index')->with('message', 'Project ' . $project->id . ' deleted successfully!');
     }
 }

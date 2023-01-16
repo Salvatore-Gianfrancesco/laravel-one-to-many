@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="d-flex justify-content-between align-items-center">
-        <h1 class="my-4">Progetti</h1>
-        <a href="{{Route('admin.projects.create')}}" class="btn btn-primary new_project">Crea un nuovo progetto</a>
+        <h1 class="my-4">Projects</h1>
+        <a href="{{Route('admin.projects.create')}}" class="btn btn-primary new_project"><i class="fa-solid fa-plus"></i></a>
     </div>
 
     @if(session('message'))
