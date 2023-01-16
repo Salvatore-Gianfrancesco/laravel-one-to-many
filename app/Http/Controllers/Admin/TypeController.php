@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TypeController extends Controller
 {
@@ -15,7 +16,9 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::all();
+
+        return view('admin.types.index', compact('types'));
     }
 
     /**
@@ -25,7 +28,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.types.create');
     }
 
     /**
@@ -36,7 +39,12 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $type = new Type();
+        $type->name = $request['name'];
+        $type->slug = Str::slug($type->name);
+        $type->save();
+
+        return to_route('admin.types.index')->with('message', 'Tipo creato con successo');
     }
 
     /**
@@ -58,7 +66,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
@@ -70,7 +78,11 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $type->name = $request['name'];
+        $type->slug = Str::slug($type->name);
+        $type->save();
+
+        return to_route('admin.types.index')->with('message', 'Tipo modificato con successo');
     }
 
     /**
@@ -81,6 +93,8 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+
+        return to_route('admin.types.index')->with('message', 'Tipo eliminato con successo');
     }
 }
