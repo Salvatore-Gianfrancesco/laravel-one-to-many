@@ -39,6 +39,22 @@
             </div>
         </div>
 
+        <div class="mb-3">
+            <label for="type_id" class="form-label">Type</label>
+            <select class="form-select @error('type_id') 'is-invalid' @enderror" name="type_id" id="type_id">
+                <option value="null">No type</option>
+
+                @forelse ($types as $type)
+                <option value="{{$type->id}}" {{$type->id == old('type_id',  $project->type ? $project->type->id : '') ? 'selected' : ''}}>
+                    {{$type->name}}
+                </option>
+                @empty
+                <option value="null">No types stored</option>
+                @endforelse
+
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-primary">Conferma</button>
     </form>
 </div>

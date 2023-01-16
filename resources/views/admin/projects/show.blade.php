@@ -11,6 +11,7 @@
     <div>
         <h2 class="my-4">{{$project->name}}</h2>
         <p>{{$project->body}}</p>
+        <div><strong>Type</strong>: {{$project->type ? $project->type->name : 'no type'}}</div>
     </div>
 </div>
 

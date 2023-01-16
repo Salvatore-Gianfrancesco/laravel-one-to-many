@@ -26,7 +26,8 @@ class StoreProjectRequest extends FormRequest
         return [
             'name' => 'required|unique:projects,name|min:5|max:100',
             'body' => 'nullable|min:10|max:300',
-            'cover_img' => 'nullable|image|max:250'
+            'cover_img' => 'nullable|image|max:250',
+            'type_id' => 'nullable|exists:types,id'
         ];
     }
 
@@ -40,7 +41,8 @@ class StoreProjectRequest extends FormRequest
             'body.min' => 'La descrizione del progetto deve essere lunga almeno 10 caratteri.',
             'body.max' => 'La descrizione del progetto deve essere lunga massimo 300 caratteri.',
             'cover_img.image' => 'Il file selezionato non è un\'immagine',
-            'cover_img.max' => 'Il nome del file selezionato è troppo lungo. Deve essere massimo di 250 caratteri'
+            'cover_img.max' => 'Il nome del file selezionato è troppo lungo. Deve essere massimo di 250 caratteri',
+            'type_id.exists' => 'Il tipo selezionato non è valido'
         ];
     }
 }
